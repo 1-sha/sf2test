@@ -10,8 +10,18 @@ class TestController extends Controller
 {
     public function indexAction()
     {
-        return new Response('le jeuj a encore frappé');
+        // return new Response('le jeuj a encore frappé');
+        // $response = $this->forward('AcmeHelloBundle:Hello:index', array('foo' => 'get', 'bar' => 'rekt'));
+        $response = $this->forward('AcmeTestBundle:Test:update');
+
+    return $response;
+
 	}
+	
+    public function updateAction()
+    {
+    	die('here');
+    }
 }
 
 

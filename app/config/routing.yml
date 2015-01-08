@@ -9,4 +9,6 @@ acme_test:
 app:
     resource: @AppBundle/Controller/
     type:     annotation
-
+acme_blog:
+    resource: "@AcmeBlogBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,4 @@
+# BlogBundle/Ressources/config/routing.yml
+acme_blog:
+    path:     /blog
+    defaults: { _controller: AcmeBlogBundle:Blog:show }

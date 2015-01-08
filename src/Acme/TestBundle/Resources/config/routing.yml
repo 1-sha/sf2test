@@ -1,0 +1,4 @@
+# TestBundle/Ressources/config/routing.yml
+acme_test_homepage:
+    path:     /test
+    defaults: { _controller: AcmeTestBundle:Test:index }

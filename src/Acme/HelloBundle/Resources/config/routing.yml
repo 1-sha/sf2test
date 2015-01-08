@@ -1,3 +1,4 @@
+# HelloBundle/Ressources/config/routing.yml
 acme_hello_homepage:
     path:     /hello/{foo}/{bar}
     defaults: { _controller: AcmeHelloBundle:Hello:index }

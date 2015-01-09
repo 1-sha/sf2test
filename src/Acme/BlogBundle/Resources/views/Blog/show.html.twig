@@ -1,0 +1,13 @@
+{# src/Acme/BlogBundle/Resources/views/Blog/show.html.twig #}
+ {% extends '::base.html.twig' %}
+ {% block title %}
+ 	~ Blog
+ {% endblock %}
+ {% block body %}
+ 	Body : {{ msg }}
+ 	<div>
+	 	<button onclick="location.href='../{{ lang }}/{{ slug }}'">
+	 		Switch lang
+	 	</button>
+	 </div>
+ {% endblock %}

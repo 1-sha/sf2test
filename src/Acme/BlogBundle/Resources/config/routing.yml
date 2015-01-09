@@ -1,4 +1,23 @@
 # BlogBundle/Ressources/config/routing.yml
-acme_blog:
-    path:     /blog
+acme_blog_page:
+    path:     /blog/{lang}/{page}
+    defaults: { _controller: AcmeBlogBundle:Blog:page }
+    requirements:
+        page: \d+
+        lang: "[^/]{2}"
+
+acme_blog_page_redirect:
+    path:     /blog/{page}
+    defaults: { _controller: AcmeBlogBundle:Blog:pageRedirect, page: 1}
+    requirements:
+        page: \d+
+
+acme_blog_show:
+    path:     /blog/{lang}/{slug}
     defaults: { _controller: AcmeBlogBundle:Blog:show }
+    requirements:
+        lang: "[^/]{2}"
+
+acme_blog_show_redirect:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeBlogBundle:Blog:showRedirect }

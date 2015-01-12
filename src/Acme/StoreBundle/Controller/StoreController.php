@@ -85,4 +85,30 @@ class StoreController extends Controller
 	    										)
 	    						);
 	}
+
+	public function findAction($name)
+	{
+		if($name == "")
+		{
+			return $this->redirect($this->generateUrl('acme_store_show',
+	    									array('id' => 1))
+	    						);
+		}
+
+	    $em = $this->getDoctrine()->getManager();
+	    $product = $em->getRepository('AcmeStoreBundle:Product')
+	    				->findOneByName($name);
+
+	    if (!$product) {
+	        throw $this->createNotFoundException(
+	            'Aucun produit trouvé pour ce nom : '.$name
+	        );
+	    }
+
+	    return $this->redirect($this->generateUrl('acme_store_show',
+	    									array('id' => ($product->getId()),
+	    											)
+	    										)
+	    						);
+	}
 }

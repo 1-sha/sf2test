@@ -19,3 +19,7 @@ acme_store_delete:
     defaults: { _controller: AcmeStoreBundle:Store:delete, id: 0 }
     requirements:
         id: \d+
+
+acme_store_find:
+    path:     /store/find/{name}
+    defaults: { _controller: AcmeStoreBundle:Store:find, name: "" }

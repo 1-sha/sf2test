@@ -1,5 +1,5 @@
 <?php
-// src/Acme/StoreBundle/Controller/DefaultController.php
+// src/Acme/StoreBundle/Controller/StoreController.php
 
 namespace Acme\StoreBundle\Controller;
 
@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\StoreBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class StoreController extends Controller
 {
     public function createAction()
 	{
@@ -53,9 +53,36 @@ class DefaultController extends Controller
 	        );
 	    }
 
-	    $product->setName('Nom du nouveau produit!');
+	    $product->setName('A Bar Foo');
+	    $product->setPrice('0.99');
+	    $product->setDescription('Très le jeuj');
 	    $em->flush();
 
-	    return $this->redirect($this->generateUrl('homepage'));
+	    return $this->redirect($this->generateUrl('acme_store_show',
+	    									array('id' => $product->getId(),
+	    											)
+	    										)
+	    						);
+	}
+
+	public function deleteAction($id)
+	{
+	    $em = $this->getDoctrine()->getManager();
+	    $product = $em->getRepository('AcmeStoreBundle:Product')->find($id);
+
+	    if (!$product) {
+	        throw $this->createNotFoundException(
+	            'Aucun produit trouvé pour cet id : '.$id
+	        );
+	    }
+
+	    $em->remove($product);
+	    $em->flush();
+
+	    return $this->redirect($this->generateUrl('acme_store_show',
+	    									array('id' => ($id - 1),
+	    											)
+	    										)
+	    						);
 	}
 }

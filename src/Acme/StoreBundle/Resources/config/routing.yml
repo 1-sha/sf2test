@@ -1,3 +1,21 @@
-acme_store_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: AcmeStoreBundle:Default:index }
+acme_store_create:
+    path:     /store/create
+    defaults: { _controller: AcmeStoreBundle:Store:create }
+
+acme_store_show:
+    path:     /store/show/{id}
+    defaults: { _controller: AcmeStoreBundle:Store:show, id: 1 }
+    requirements:
+        id: \d+
+
+acme_store_edit:
+    path:     /store/update/{id}
+    defaults: { _controller: AcmeStoreBundle:Store:update, id: 0 }
+    requirements:
+        id: \d+
+
+acme_store_delete:
+    path:     /store/delete/{id}
+    defaults: { _controller: AcmeStoreBundle:Store:delete, id: 0 }
+    requirements:
+        id: \d+
